@@ -17,10 +17,10 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-wrap justify-center gap-8 md:gap-10">
-          <a className="text-sm text-[#5c5f5e] hover:text-[#154212] transition-colors" href="#">
+          <a className="text-sm text-[#5c5f5e] hover:text-[#154212] transition-colors" href="/privacy">
             Privacy Policy
           </a>
-          <a className="text-sm text-[#5c5f5e] hover:text-[#154212] transition-colors" href="#">
+          <a className="text-sm text-[#5c5f5e] hover:text-[#154212] transition-colors" href="/terms">
             Terms of Service
           </a>
           <a className="text-sm text-[#5c5f5e] hover:text-[#154212] transition-colors" href="#">
