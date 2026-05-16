@@ -1,0 +1,386 @@
+<!DOCTYPE html><html lang="zh-CN" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>LLM Admin - 一个软件，两种协议，无限模型</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#dce2f3",
+                        "secondary": "#5c5f5e",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f9f9ff",
+                        "on-secondary-fixed-variant": "#454747",
+                        "primary-fixed-dim": "#a1d494",
+                        "surface-container-low": "#f0f3ff",
+                        "on-primary-container": "#9dd090",
+                        "error-container": "#ffdad6",
+                        "background": "#f9f9ff",
+                        "inverse-primary": "#a1d494",
+                        "secondary-fixed-dim": "#c5c7c6",
+                        "tertiary-fixed-dim": "#ffb0cc",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#42493e",
+                        "surface-container": "#e7eefe",
+                        "on-primary-fixed-variant": "#23501e",
+                        "on-primary-fixed": "#002201",
+                        "error": "#ba1a1a",
+                        "on-background": "#151c27",
+                        "secondary-fixed": "#e1e3e2",
+                        "on-secondary-container": "#626564",
+                        "surface-variant": "#dce2f3",
+                        "on-tertiary-container": "#ffaac8",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#7c3a55",
+                        "inverse-on-surface": "#ebf1ff",
+                        "surface-container-high": "#e2e8f8",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#191c1c",
+                        "secondary-container": "#e1e3e2",
+                        "tertiary-fixed": "#ffd9e4",
+                        "outline-variant": "#c2c9bb",
+                        "on-tertiary-fixed": "#3b0520",
+                        "primary-fixed": "#bcf0ae",
+                        "surface-dim": "#d3daea",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#151c27",
+                        "surface": "#f9f9ff",
+                        "outline": "#72796e",
+                        "tertiary": "#60233e",
+                        "surface-tint": "#3b6934",
+                        "inverse-surface": "#2a313d",
+                        "primary-container": "#2d5a27",
+                        "on-tertiary-fixed-variant": "#71314c",
+                        "primary": "#154212"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "container-max": "1200px",
+                        "section-padding": "80px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #f9f9ff;
+            color: #151c27;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .soft-shadow {
+            box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.04);
+        }
+        @keyframes text-slide {
+          0%, 20% { transform: translateY(0); }
+          25%, 45% { transform: translateY(-25%); }
+          50%, 70% { transform: translateY(-50%); }
+          75%, 100% { transform: translateY(-75%); }
+        }
+        .animate-text-slide {
+          animation: text-slide 6s cubic-bezier(0.83, 0, 0.17, 1) infinite;
+        }
+        @keyframes flow {
+            0% { stroke-dashoffset: 200; opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { stroke-dashoffset: 0; opacity: 0; }
+        }
+        .animate-flow {
+            stroke-dasharray: 40 160;
+            animation: flow 4s linear infinite;
+        }
+    </style>
+<style data-stitch-cursor="">*{cursor:crosshair!important}[contenteditable="true"]:focus,.cursor-text:focus{cursor:text!important}</style><style data-stitch-scroll-lock="">html,body{overflow:hidden!important}</style></head>
+<body class="font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-8 py-3 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md rounded-full mt-4 mx-auto max-w-container-max border border-outline/10 shadow-sm">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim flex items-center gap-2">
+<img alt="LLM Admin Logo" class="w-8 h-8 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBziApDRQAWO4534S3eZRWlkUGdn1PQUdR2mCrqNzGMNPpVjJ7t0ZyWTUTJwqJvCrVCTqny1XHmGlgB4lfh6pZYjNsltJxpWuB5OTSeXibgWkJe114xTse-fFpRb5FcPFNlcjG1ox-JkuPxmdjvzPNDSoAdPadVWPBtePOy_TKxaCU2MpThqv2ysVm9OPtKzm969urA5FyKL1OOv5fiMeixqoOntDH773C2ocl0qAF4ILxDxIa9YbfjyuMCtHBrcF3mHEh0KXBU4zE">
+<span class="">LLM Admin</span>
+</div>
+<div class="hidden md:flex gap-8">
+<a class="text-primary dark:text-primary-fixed-dim font-semibold border-b-2 border-primary font-body-md text-body-md transition-all" href="#">Overview</a>
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-body-md text-body-md" href="#">Features</a>
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-body-md text-body-md" href="#">About</a>
+</div>
+<button class="bg-primary-container text-on-primary font-label-md text-label-md px-6 py-2.5 rounded-full hover:opacity-90 transition-all scale-95 active:scale-90 hover:shadow-lg active:scale-95">
+            Get Started
+        </button>
+</nav>
+<!-- Main Content -->
+<main>
+<!-- Hero Section -->
+<section class="pt-[160px] pb-section-padding px-margin-mobile md:px-gutter max-w-container-max mx-auto"><div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center text-left">
+<div class="space-y-8">
+<h1 class="font-headline-xl text-headline-xl md:leading-tight text-on-background tracking-tight md:text-[64px] leading-tight">一个接口<div class="">&nbsp; &nbsp; &nbsp; &nbsp;两种<span class="inline-flex flex-col h-[1em] overflow-hidden"><span class="animate-text-slide text-left"><span class="">协议</span><br><span class="">OpenAI</span><br><span class="">Anthropic</span><br><span class="">协议</span></span></span></div><div class=""><span class="text-primary-container">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;任意模型</span>
+</div></h1>
+<p class="font-body-lg text-body-lg text-secondary leading-relaxed max-w-xl">
+            LLM Admin 是为您量身定制的强大且灵活的软件分发解决方案。无论是在复杂的企业环境还是个人开发工作流中，都能提供卓越的稳定性与性能表现。
+        </p>
+<div class="flex flex-row flex-nowrap gap-4 pt-4">
+<button class="flex-1 flex items-center justify-center gap-2 bg-primary-container text-on-primary px-4 py-3 rounded-xl font-label-md text-label-md hover:bg-primary hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg">
+<span class="material-symbols-outlined">desktop_windows</span>
+                Windows (.exe)
+            </button>
+<button class="flex-1 flex items-center justify-center gap-2 bg-primary-container text-on-primary px-4 py-3 rounded-xl font-label-md text-label-md hover:bg-primary hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg">
+<img alt="macOS icon" class="w-6 h-6 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGu_se546kpGcTNtP74sGrccnRhOWsTutRrrjNDu-wC99D26tU21DDAK8TF74YTUEsOiHxcWHh49Tkt81_CyOe2YVoIhgQkVV75kcCEMLvW9BZJQAYk7ByKqErOJvZw0HfnA5D9Wm130EaoFntJdGDhjvIl6b0CIePskesMCUDCIFooRLonph01FdQnNAshAOr3DYWha3h4oD9_aKVKR0-482WKKRGvuUoJTXPIAX-Lw_JT8q9AnGCbcrDAw1rfTTm8rlppsSOieE">
+                macOS (.dmg)
+            </button>
+<button class="flex-1 flex items-center justify-center gap-2 bg-primary-container text-on-primary px-4 py-3 rounded-xl font-label-md text-label-md hover:bg-primary hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg">
+<img class="w-5 h-5 object-contain invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTP3Y94JOMqmgwSYqfjAM1f6soF1GnVoHCIQ-N_hGJxvw1LL9RmTxBrq1oFMGL__fOwWyagMOyXan7E-N7XzVuwoZr4Y0Iy8I-Mt46WGB1cfqbcMieYZ50xgJ37c83_XZ8W3CdziYnX6oHRnTf7b9Ev7sfPCnOSQgZnxWUmY5OcssD4ifT05j6V1SG6lN3xkKr6MwAjO2iYu0TKXSEJ7iUTsvbBtLlnbD56o9mep-j2T9HlmY1xlEAQHU1AkeP7oLSjb8qPgLNrr2Gyw">
+                Linux (.deb)
+            </button>
+</div>
+</div>
+<div class="relative">
+<div class="absolute inset-0 bg-primary-container/5 blur-[120px] rounded-full -z-10 transform scale-75"></div>
+<div class="rounded-2xl overflow-hidden border border-outline/10 soft-shadow bg-surface-container-lowest p-2 md:p-3">
+<img alt="LLM Admin Dashboard Preview" class="w-full h-auto rounded-lg shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQWdPNXEm9_UBK1FT984LqBttxKm9zo1TZzgpduFwCJ7O-lfDAgyzRZP-9erAfssV7Io2iirts-Vvw3823-B2DbVUi2f7XGknHONzEBZaHm1F7_jydtYfBgGKoqre7dzlgyZu4Ma5sUP5sTgzVDxmBGYDjF4PNU2cWWqI-6tdPtNdN1sk3A-jQlxDAAkKCaBst9aEAmEhsJS1mXCrqdTiQga2y7ehaox3WT6eIYaCPt2Mpb_pN6mD8J2iqeohCH0ojnYnKe7NzZQM">
+</div>
+</div>
+</div></section>
+<!-- Features Section -->
+<section class="py-12 bg-surface-container-low/30 px-margin-mobile md:px-gutter" id="ProviderMarquee">
+<div class="max-w-container-max mx-auto">
+<div class="w-full overflow-hidden py-4 bg-transparent opacity-60 hover:opacity-100 transition-opacity">
+<div class="flex whitespace-nowrap gap-12 items-center animate-marquee hover:[animation-play-state:paused]">
+<div class="flex shrink-0 items-center gap-12 font-headline-md text-primary tracking-widest">
+<span class="">OpenAI</span><span class="">Anthropic</span><span class="">Google</span><span class="">GLM</span><span class="">DeepSeek</span><span class="">MiniMax</span>
+</div>
+<div class="flex shrink-0 items-center gap-12 font-headline-md text-primary tracking-widest">
+<span class="">OpenAI</span><span class="">Anthropic</span><span class="">Google</span><span class="">GLM</span><span class="">DeepSeek</span><span class="">MiniMax</span>
+</div>
+<div class="flex shrink-0 items-center gap-12 font-headline-md text-primary tracking-widest">
+<span class="">OpenAI</span><span class="">Anthropic</span><span class="">Google</span><span class="">GLM</span><span class="">DeepSeek</span><span class="">MiniMax</span>
+</div>
+</div>
+</div>
+<style>
+      @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-33.33%); } }
+      .animate-marquee { animation: marquee 20s linear infinite; }
+    </style>
+</div>
+</section>
+<section class="py-section-padding bg-surface-container-low/30 px-margin-mobile md:px-gutter border-t border-outline/5" id="FeatureGrid">
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-4">核心功能</h2>
+<div class="w-16 h-1 bg-primary-container mx-auto rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Feature 1 -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline/5 soft-shadow hover:-translate-y-1 transition-transform duration-300 hover:border-primary-container/20 hover:shadow-xl">
+<div class="w-12 h-12 bg-primary-container/5 text-primary-container rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">route</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3">自定义路由</h3>
+<p class="font-body-md text-body-md text-secondary">灵活配置您的流量路径，确保数据传输的高效与安全。</p>
+</div>
+<!-- Feature 2 -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline/5 soft-shadow hover:-translate-y-1 transition-transform duration-300 hover:border-primary-container/20 hover:shadow-xl">
+<div class="w-12 h-12 bg-primary-container/5 text-primary-container rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">hub</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3">多种供应商</h3>
+<p class="font-body-md text-body-md text-secondary">原生支持广泛的全球服务提供商集成，满足多样化业务需求。</p>
+</div>
+<!-- Feature 3 -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline/5 soft-shadow hover:-translate-y-1 transition-transform duration-300 hover:border-primary-container/20 hover:shadow-xl">
+<div class="w-12 h-12 bg-primary-container/5 text-primary-container rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">security</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3">协议兼容</h3>
+<p class="font-body-md text-body-md text-secondary">深度优化，完美适配多种标准传输协议，保障极速响应。</p>
+</div>
+<!-- Feature 4 -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline/5 soft-shadow hover:-translate-y-1 transition-transform duration-300 hover:border-primary-container/20 hover:shadow-xl">
+<div class="w-12 h-12 bg-primary-container/5 text-primary-container rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">dashboard</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3">界面友好</h3>
+<p class="font-body-md text-body-md text-secondary">直观且现代的用户交互界面，让复杂的操作变得简单自然。</p>
+</div>
+</div><!-- Core Benefits Block -->
+<div class="mt-16 pt-16 border-t border-outline/5">
+<div class="mb-8">
+<div class="text-center mb-12">
+<h4 class="font-headline-md text-headline-md text-on-background mb-4">工作流程</h4>
+<div class="w-16 h-1 bg-primary-container mx-auto rounded-full"></div>
+</div>
+<div class="relative flex flex-col md:flex-row justify-between items-center max-w-4xl mx-auto gap-8 md:gap-4">
+<div class="hidden md:block absolute top-1/2 left-0 w-full h-px bg-primary-container/10 -translate-y-1/2 z-0"></div>
+<div class="relative z-10 flex flex-col items-center flex-1">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest border-2 border-primary-container/20 flex items-center justify-center mb-4 soft-shadow">
+<span class="material-symbols-outlined text-primary-container">api</span>
+</div>
+<span class="font-body-lg font-semibold text-on-background">连接供应商</span>
+<span class="text-label-sm text-secondary mt-1">Connect Providers</span>
+</div>
+<div class="md:hidden">
+<span class="material-symbols-outlined text-primary-container/30">arrow_downward</span>
+</div>
+<div class="relative z-10 flex flex-col items-center flex-1">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest border-2 border-primary-container/20 flex items-center justify-center mb-4 soft-shadow">
+<span class="material-symbols-outlined text-primary-container">schema</span>
+</div>
+<span class="font-body-lg font-semibold text-on-background">添加模型</span>
+<span class="text-label-sm text-secondary mt-1">Add Models</span>
+</div>
+<div class="md:hidden">
+<span class="material-symbols-outlined text-primary-container/30">arrow_downward</span>
+</div>
+<div class="relative z-10 flex flex-col items-center flex-1">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest border-2 border-primary-container/20 flex items-center justify-center mb-4 soft-shadow">
+<span class="material-symbols-outlined text-primary-container">alt_route</span>
+</div>
+<span class="font-body-lg font-semibold text-on-background">指定路由</span>
+<span class="text-label-sm text-secondary mt-1">Assign Routes</span>
+</div>
+</div>
+</div>
+<!-- Routing Convergence Animation -->
+<div class="w-full max-w-4xl mx-auto h-32 md:h-40 overflow-hidden relative mb-8">
+<svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 800 160">
+<!-- Static Paths -->
+<path d="M 133 0 Q 133 80 400 120" fill="none" opacity="0.4" stroke="#e1e3e2" stroke-width="1.5"></path>
+<path d="M 400 0 Q 400 80 400 120" fill="none" opacity="0.4" stroke="#e1e3e2" stroke-width="1.5"></path>
+<path d="M 666 0 Q 666 80 400 120" fill="none" opacity="0.4" stroke="#e1e3e2" stroke-width="1.5"></path>
+<!-- Animated Flows -->
+<path class="animate-flow" d="M 133 0 Q 133 80 400 120" fill="none" stroke="#2d5a27" stroke-width="2" style="animation-delay: 0s;"></path>
+<path class="animate-flow" d="M 400 0 Q 400 80 400 120" fill="none" stroke="#2d5a27" stroke-width="2" style="animation-delay: 1.5s;"></path>
+<path class="animate-flow" d="M 666 0 Q 666 80 400 120" fill="none" stroke="#2d5a27" stroke-width="2" style="animation-delay: 0.8s;"></path>
+<!-- Focal Point -->
+<circle cx="400" cy="120" fill="#2d5a27" r="3">
+<animate attributeName="r" dur="2s" repeatCount="indefinite" values="2;4;2"></animate>
+<animate attributeName="opacity" dur="2s" repeatCount="indefinite" values="1;0.4;1"></animate>
+</circle>
+</svg>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+<div class="p-6">
+<div class="font-headline-xl text-primary mb-2">20%</div>
+<div class="font-body-lg font-semibold text-on-background">节省 Token</div>
+<p class="font-label-md text-secondary mt-1">通过智能优化显著降低成本</p>
+</div>
+<div class="p-6">
+<div class="font-headline-xl text-primary mb-2">&lt;5s</div>
+<div class="font-body-lg font-semibold text-on-background">平均响应时间</div>
+<p class="font-label-md text-secondary mt-1">极速流式传输，拒绝等待</p>
+</div>
+<div class="p-6">
+<div class="font-headline-xl text-primary mb-2">100+</div>
+<div class="font-body-lg font-semibold text-on-background">主流模型</div>
+<p class="font-label-md text-secondary mt-1">一键集成全球顶尖 AI 能力</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Asymmetric Visual Section -->
+<section class="py-section-padding px-margin-mobile md:px-gutter max-w-3xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-4">常见问题</h2>
+<div class="w-16 h-1 bg-primary-container mx-auto rounded-full"></div>
+</div>
+<div class="space-y-4">
+<details class="group bg-surface-container-lowest border border-outline/5 rounded-2xl soft-shadow transition-all duration-300">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<span class="font-headline-md text-body-lg font-semibold text-on-background">什么是 LLM Admin？</span>
+<span class="material-symbols-outlined text-primary-container transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-secondary font-body-md">
+        LLM Admin 是一款专为开发者和企业设计的大模型管理与分发平台，攨合了多种协议与供应商，提供极致的性能和灵活性。
+      </div>
+</details>
+<details class="group bg-surface-container-lowest border border-outline/5 rounded-2xl soft-shadow transition-all duration-300">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<span class="font-headline-md text-body-lg font-semibold text-on-background">怎么自定义路由？</span>
+<span class="material-symbols-outlined text-primary-container transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-secondary font-body-md">
+        您可以在控制台通过直观的界面或配畮文件定义流量路径，支持基于模型类型、地理位置或优先级的智能调度。
+      </div>
+</details>
+<details class="group bg-surface-container-lowest border border-outline/5 rounded-2xl soft-shadow transition-all duration-300">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<span class="font-headline-md text-body-lg font-semibold text-on-background">统一接口是什么？</span>
+<span class="material-symbols-outlined text-primary-container transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-secondary font-body-md">
+        统一接口指将不同供应商（如 OpenAI, Claude, 国产模型等）的 API 标准化，让开发者只需一套代码即可调用所有模型。
+      </div>
+</details>
+<details class="group bg-surface-container-lowest border border-outline/5 rounded-2xl soft-shadow transition-all duration-300">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<span class="font-headline-md text-body-lg font-semibold text-on-background">具体路由的规则是怎样的？</span>
+<span class="material-symbols-outlined text-primary-container transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-secondary font-body-md">
+        路由规则采用多层级匹配机制，包括负载均衡、故障自动转移以及基于 Token 消耗的成本优化规则。
+      </div>
+</details>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-background-light dark:bg-background-dark border-t border-outline/5 w-full">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-gutter py-12 max-w-container-max mx-auto">
+<div class="flex flex-col items-center md:items-start gap-3 mb-8 md:mb-0">
+<div class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2">
+<img alt="LLM Admin Logo" class="w-8 h-8 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCt8mpY8u5MzhYKVUETd2gBSJ1U7XYIpaUpF7TZG61XSpZkEQVLaE1PkyffUaz2ftyFe7aVFxrHLTcTBMQx2b0U52L8pkE8nc_1_LNGaqprgqX0GVvf8U0Flb9MAtdvwXeicZOqXUSJzzBpsZ0MQuCPJeValylFBCWkio27JNLUs6HZoiPxcIciDAGWHEeRPHKG-87YRSCkTzFsoeH71hoK3fRUz6b_Q1NOSCb1YHCG-sr7sPiQoP3hvoNkrAKWW8MzAVURa16DW0">
+<span class="">LLM Admin</span>
+</div>
+<p class="font-label-md text-label-md text-secondary opacity-80 max-w-xs text-center md:text-left">
+        © 2024 LLM Admin. All rights reserved. Built for precision.
+      </p>
+</div>
+<div class="flex flex-wrap justify-center gap-8 md:gap-10">
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Documentation</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Status</a>
+</div>
+</div>
+</footer>
+
+
+</body></html>
