@@ -1,5 +1,7 @@
 "use client";
 
+import { MdApi, MdTableChart, MdAltRoute, MdRoute, MdHub, MdSecurity, MdDashboard } from "react-icons/md";
+
 export default function Features() {
   return (
     <section id="features" className="py-20 bg-[#f0f3ff]/30 px-4 md:px-6 border-t border-[#72796e]/5">
@@ -13,9 +15,7 @@ export default function Features() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="bg-white p-8 rounded-2xl border border-[#72796e]/5 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform duration-300 hover:border-[#2d5a27]/20 hover:shadow-xl">
             <div className="w-12 h-12 bg-[#2d5a27]/5 text-[#2d5a27] rounded-xl flex items-center justify-center mb-6">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-              </svg>
+              <MdRoute className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-semibold text-[#151c27] mb-3">自定义路由</h3>
             <p className="text-[#5c5f5e]">灵活配置您的流量路径，确保数据传输的高效与安全。</p>
@@ -23,9 +23,7 @@ export default function Features() {
 
           <div className="bg-white p-8 rounded-2xl border border-[#72796e]/5 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform duration-300 hover:border-[#2d5a27]/20 hover:shadow-xl">
             <div className="w-12 h-12 bg-[#2d5a27]/5 text-[#2d5a27] rounded-xl flex items-center justify-center mb-6">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
-              </svg>
+              <MdHub className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-semibold text-[#151c27] mb-3">多种供应商</h3>
             <p className="text-[#5c5f5e]">原生支持广泛的全球服务提供商集成，满足多样化业务需求。</p>
@@ -33,9 +31,7 @@ export default function Features() {
 
           <div className="bg-white p-8 rounded-2xl border border-[#72796e]/5 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform duration-300 hover:border-[#2d5a27]/20 hover:shadow-xl">
             <div className="w-12 h-12 bg-[#2d5a27]/5 text-[#2d5a27] rounded-xl flex items-center justify-center mb-6">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
+              <MdSecurity className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-semibold text-[#151c27] mb-3">协议兼容</h3>
             <p className="text-[#5c5f5e]">深度优化，完美适配多种标准传输协议，保障极速响应。</p>
@@ -43,9 +39,7 @@ export default function Features() {
 
           <div className="bg-white p-8 rounded-2xl border border-[#72796e]/5 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform duration-300 hover:border-[#2d5a27]/20 hover:shadow-xl">
             <div className="w-12 h-12 bg-[#2d5a27]/5 text-[#2d5a27] rounded-xl flex items-center justify-center mb-6">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
-              </svg>
+              <MdDashboard className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-semibold text-[#151c27] mb-3">界面友好</h3>
             <p className="text-[#5c5f5e]">直观且现代的用户交互界面，让复杂的操作变得简单自然。</p>
@@ -64,9 +58,7 @@ export default function Features() {
 
             <div className="relative z-10 flex flex-col items-center flex-1">
               <div className="w-16 h-16 rounded-full bg-white border-2 border-[#2d5a27]/20 flex items-center justify-center mb-4 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.04)]">
-                <svg className="w-6 h-6 text-[#2d5a27]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
+                <MdApi className="w-7 h-7 text-[#2d5a27]" />
               </div>
               <span className="font-semibold text-[#151c27]">连接供应商</span>
               <span className="text-xs text-[#5c5f5e] mt-1">Connect Providers</span>
@@ -80,9 +72,7 @@ export default function Features() {
 
             <div className="relative z-10 flex flex-col items-center flex-1">
               <div className="w-16 h-16 rounded-full bg-white border-2 border-[#2d5a27]/20 flex items-center justify-center mb-4 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.04)]">
-                <svg className="w-6 h-6 text-[#2d5a27]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
-                </svg>
+                <MdTableChart className="w-7 h-7 text-[#2d5a27]" />
               </div>
               <span className="font-semibold text-[#151c27]">添加模型</span>
               <span className="text-xs text-[#5c5f5e] mt-1">Add Models</span>
@@ -96,13 +86,30 @@ export default function Features() {
 
             <div className="relative z-10 flex flex-col items-center flex-1">
               <div className="w-16 h-16 rounded-full bg-white border-2 border-[#2d5a27]/20 flex items-center justify-center mb-4 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.04)]">
-                <svg className="w-6 h-6 text-[#2d5a27]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                </svg>
+                <MdAltRoute className="w-7 h-7 text-[#2d5a27]" />
               </div>
               <span className="font-semibold text-[#151c27]">指定路由</span>
               <span className="text-xs text-[#5c5f5e] mt-1">Assign Routes</span>
             </div>
+          </div>
+
+          {/* Routing Convergence Animation */}
+          <div className="w-full max-w-4xl mx-auto h-32 md:h-40 overflow-hidden relative mb-8">
+            <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 800 160">
+              {/* Static Paths */}
+              <path d="M 133 0 Q 133 80 400 120" fill="none" opacity="0.4" stroke="#e1e3e2" strokeWidth="1.5"></path>
+              <path d="M 400 0 Q 400 80 400 120" fill="none" opacity="0.4" stroke="#e1e3e2" strokeWidth="1.5"></path>
+              <path d="M 666 0 Q 666 80 400 120" fill="none" opacity="0.4" stroke="#e1e3e2" strokeWidth="1.5"></path>
+              {/* Animated Flows */}
+              <path className="animate-flow" data-delay="0s" d="M 133 0 Q 133 80 400 120" fill="none" stroke="#2d5a27" strokeWidth="2"></path>
+              <path className="animate-flow" data-delay="1.5s" d="M 400 0 Q 400 80 400 120" fill="none" stroke="#2d5a27" strokeWidth="2"></path>
+              <path className="animate-flow" data-delay="0.8s" d="M 666 0 Q 666 80 400 120" fill="none" stroke="#2d5a27" strokeWidth="2"></path>
+              {/* Focal Point */}
+              <circle cx="400" cy="120" fill="#2d5a27" r="3">
+                <animate attributeName="r" dur="2s" repeatCount="indefinite" values="2;4;2"></animate>
+                <animate attributeName="opacity" dur="2s" repeatCount="indefinite" values="1;0.4;1"></animate>
+              </circle>
+            </svg>
           </div>
 
           {/* Stats */}

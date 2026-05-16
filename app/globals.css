@@ -98,4 +98,28 @@
   .animate-marquee {
     animation: marquee 20s linear infinite;
   }
+
+  @keyframes flow {
+    0% { stroke-dashoffset: 200; opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 0; }
+  }
+
+  .animate-flow {
+    stroke-dasharray: 40 160;
+    animation: flow 4s linear infinite;
+  }
+
+  .animate-flow[data-delay="0s"] {
+    animation-delay: 0s;
+  }
+
+  .animate-flow[data-delay="1.5s"] {
+    animation-delay: 1.5s;
+  }
+
+  .animate-flow[data-delay="0.8s"] {
+    animation-delay: 0.8s;
+  }
 }

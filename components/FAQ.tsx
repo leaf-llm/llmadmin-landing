@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { MdExpandMore } from "react-icons/md";
 
 const faqs = [
   {
@@ -45,9 +46,7 @@ export default function FAQ() {
           >
             <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
               <span className="font-semibold text-[#151c27]">{faq.question}</span>
-              <span className="material-symbols-outlined text-[#2d5a27] transition-transform duration-300 group-open:rotate-180">
-                expand_more
-              </span>
+              <MdExpandMore size={24} className="text-[#2d5a27] transition-transform duration-300 group-open:rotate-180" />
             </summary>
             <div className="px-6 pb-6 text-[#5c5f5e]">{faq.answer}</div>
           </details>

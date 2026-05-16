@@ -1,5 +1,8 @@
 "use client";
 
+import { Apple } from '@lobehub/icons';
+import { FaWindows, FaUbuntu } from 'react-icons/fa';
+
 export default function Hero() {
   return (
     <section className="pt-[160px] pb-20 px-4 md:px-6 max-w-[1200px] mx-auto">
@@ -32,21 +35,15 @@ export default function Hero() {
           </p>
           <div className="flex flex-row flex-nowrap gap-4 pt-4">
             <button className="flex-1 flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-4 py-3 rounded-xl hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg text-sm font-medium">
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M3 12h18v-2H3v2zm0-4h18V6H3v2zm0 8h18v-2H3v2z"/>
-              </svg>
+              <FaWindows size={20} />
               Windows (.exe)
             </button>
             <button className="flex-1 flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-4 py-3 rounded-xl hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg text-sm font-medium">
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
-              </svg>
+              <Apple size={20} />
               macOS (.dmg)
             </button>
             <button className="flex-1 flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-4 py-3 rounded-xl hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg text-sm font-medium">
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-              </svg>
+              <FaUbuntu size={20} />
               Linux (.deb)
             </button>
           </div>
