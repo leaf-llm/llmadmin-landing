@@ -1,60 +1,67 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 py-24">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="text-center max-w-3xl"
-      >
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
-          LLM Admin
-        </h1>
-        <p className="text-2xl md:text-3xl text-white mb-4">
-          一个软件，两种协议，所有模型
-        </p>
-        <p className="text-lg text-gray-400">
-          本地 AI 网关，连接所有主流模型供应商
-        </p>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.8 }}
-        className="mt-16"
-      >
-        <div className="flex gap-4">
-          <a
-            href="https://github.com/llmadmin/llmadmin/releases/latest/download/llmadmin-windows-amd64.deb"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer text-white/80"
-          >
-            Windows
-          </a>
-          <a
-            href="https://github.com/llmadmin/llmadmin/releases/latest/download/llmadmin-darwin-arm64.deb"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer text-white/80"
-          >
-            macOS
-          </a>
-          <a
-            href="https://github.com/llmadmin/llmadmin/releases/latest/download/llmadmin-linux-amd64.deb"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer text-white/80"
-          >
-            Linux
-          </a>
+    <section className="pt-[160px] pb-20 px-4 md:px-6 max-w-[1200px] mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center text-left">
+        <div className="space-y-8">
+          <h1 className="text-5xl md:text-6xl lg:text-[64px] leading-tight font-bold text-[#151c27] tracking-tight">
+            一个接口
+            <div>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;两种
+              <span className="inline-flex flex-col h-[1em] overflow-hidden align-top">
+                <span className="animate-text-slide text-left">
+                  <span className="text-[#2d5a27]">协议</span>
+                  <br />
+                  <span className="text-[#2d5a27]">OpenAI</span>
+                  <br />
+                  <span className="text-[#2d5a27]">Anthropic</span>
+                  <br />
+                  <span className="text-[#2d5a27]">协议</span>
+                </span>
+              </span>
+            </div>
+            <div>
+              <span className="text-[#2d5a27]">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;任意模型
+              </span>
+            </div>
+          </h1>
+          <p className="text-lg text-[#5c5f5e] leading-relaxed max-w-xl">
+            LLM Admin 是为您量身定制的强大且灵活的软件分发解决方案。无论是在复杂的企业环境还是个人开发工作流中，都能提供卓越的稳定性与性能表现。
+          </p>
+          <div className="flex flex-row flex-nowrap gap-4 pt-4">
+            <button className="flex-1 flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-4 py-3 rounded-xl hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg text-sm font-medium">
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 12h18v-2H3v2zm0-4h18V6H3v2zm0 8h18v-2H3v2z"/>
+              </svg>
+              Windows (.exe)
+            </button>
+            <button className="flex-1 flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-4 py-3 rounded-xl hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg text-sm font-medium">
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+              </svg>
+              macOS (.dmg)
+            </button>
+            <button className="flex-1 flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-4 py-3 rounded-xl hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg text-sm font-medium">
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+              </svg>
+              Linux (.deb)
+            </button>
+          </div>
         </div>
-      </motion.div>
+        <div className="relative">
+          <div className="absolute inset-0 bg-[#2d5a27]/5 blur-[120px] rounded-full -z-10 transform scale-75" />
+          <div className="rounded-2xl overflow-hidden border border-[#72796e]/10 soft-shadow bg-white p-2 md:p-3">
+            <img
+              alt="LLM Admin Dashboard Preview"
+              className="w-full h-auto rounded-lg shadow-sm"
+              src="/logo.png"
+            />
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
