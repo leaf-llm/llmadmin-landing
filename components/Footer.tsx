@@ -12,7 +12,7 @@ export default function Footer() {
             <span className="font-semibold text-[#154212]">LLM Admin</span>
           </div>
           <p className="text-sm text-[#5c5f5e] opacity-80 max-w-xs text-center md:text-left">
-            © 2024 LLM Admin. All rights reserved. Built for precision.
+            © 2026 LLM Admin. All rights reserved. Built for precision.
           </p>
         </div>
 
@@ -23,11 +23,8 @@ export default function Footer() {
           <a className="text-sm text-[#5c5f5e] hover:text-[#154212] transition-colors" href="/terms">
             Terms of Service
           </a>
-          <a className="text-sm text-[#5c5f5e] hover:text-[#154212] transition-colors" href="#">
+          <a className="text-sm text-[#5c5f5e] hover:text-[#154212] transition-colors" href="/tutorials">
             Documentation
-          </a>
-          <a className="text-sm text-[#5c5f5e] hover:text-[#154212] transition-colors" href="#">
-            Status
           </a>
         </div>
       </div>
