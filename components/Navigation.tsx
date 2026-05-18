@@ -1,6 +1,15 @@
 "use client";
 
+import { usePathname } from "next/navigation";
+
 export default function Navigation() {
+  const pathname = usePathname();
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-8 py-3 bg-[#f9f9ff]/80 dark:bg-[#d3daea]/80 backdrop-blur-md rounded-full mt-4 mx-auto max-w-[1200px] border border-[#72796e]/10 shadow-sm">
       <a href="/" className="flex items-center gap-2">
@@ -15,19 +24,19 @@ export default function Navigation() {
       </a>
       <div className="hidden md:flex gap-8">
         <a
-          className="text-[#154212] dark:text-[#a1d494] font-semibold border-b-2 border-[#154212] transition-all text-sm"
-          href="#"
+          className={isActive("/") ? "text-[#154212] dark:text-[#a1d494] font-semibold border-b-2 border-[#154212] transition-all text-sm" : "text-[#5c5f5e] dark:text-[#c5c7c6] hover:text-[#154212] dark:hover:text-[#a1d494] transition-colors text-sm"}
+          href="/"
         >
           Overview
         </a>
         <a
           className="text-[#5c5f5e] dark:text-[#c5c7c6] hover:text-[#154212] dark:hover:text-[#a1d494] transition-colors text-sm"
-          href="#features"
+          href="/#features"
         >
           Features
         </a>
         <a
-          className="text-[#5c5f5e] dark:text-[#c5c7c6] hover:text-[#154212] dark:hover:text-[#a1d494] transition-colors text-sm"
+          className={isActive("/tutorials") ? "text-[#154212] dark:text-[#a1d494] font-semibold border-b-2 border-[#154212] transition-all text-sm" : "text-[#5c5f5e] dark:text-[#c5c7c6] hover:text-[#154212] dark:hover:text-[#a1d494] transition-colors text-sm"}
           href="/tutorials"
         >
           Tutorials
