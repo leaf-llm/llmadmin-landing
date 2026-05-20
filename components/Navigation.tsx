@@ -18,9 +18,14 @@ export default function Navigation() {
           className="w-8 h-8 object-contain"
           src="/logo.png"
         />
-        <span className="font-semibold text-[#154212] dark:text-[#a1d494]">
-          LLM Admin
-        </span>
+        <div className="flex items-center gap-2">
+          <span className="font-semibold text-[#154212] dark:text-[#a1d494]">
+            LLM Admin
+          </span>
+          <span className="hidden sm:block text-xs text-[#5c5f5e] font-medium tracking-wide">
+            Your Chief LLM Partner
+          </span>
+        </div>
       </a>
       <div className="hidden md:flex gap-8">
         <a

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "LLM Admin - 一个软件，两种协议，无限模型",
+  title: "LLM Admin - Your Chief LLM Partner",
   description:
-    "LLM Admin 是为您量身定制的强大且灵活的软件分发解决方案。无论是在复杂的企业环境还是个人开发工作流中，都能提供卓越的稳定性与性能表现。",
+    "LLM Admin 将您的模型编排为一支全天候待命的 AI 团队。它调度、切换、守护每一次请求。您只管使用 —— 无惧网络波动。",
 };
 
 export default function RootLayout({

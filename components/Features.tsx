@@ -1,14 +1,15 @@
 "use client";
 
-import { MdApi, MdTableChart, MdAltRoute, MdRoute, MdHub, MdSecurity, MdDashboard } from "react-icons/md";
+import { MdApi, MdTableChart, MdAltRoute, MdRoute, MdHub, MdSecurity, MdDashboard, MdKey, MdBarChart } from "react-icons/md";
 
 export default function Features() {
   return (
     <section id="features" className="py-20 bg-[#f0f3ff]/30 px-4 md:px-6 border-t border-[#72796e]/5">
       <div className="max-w-[1200px] mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-[#151c27] mb-4">核心功能</h2>
+          <h2 className="text-3xl font-bold text-[#151c27] mb-4">强大，不止所见</h2>
           <div className="w-16 h-1 bg-[#2d5a27] mx-auto rounded-full" />
+          <p className="text-[#5c5f5e] mt-6">丰富的功能矩阵，总有一款适合你。</p>
         </div>
 
         {/* Feature Grid */}
@@ -18,15 +19,15 @@ export default function Features() {
               <MdRoute className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-semibold text-[#151c27] mb-3">自定义路由</h3>
-            <p className="text-[#5c5f5e]">灵活配置您的流量路径，确保数据传输的高效与安全。</p>
+            <p className="text-[#5c5f5e]">灵活配置您的流量路径，多样的路由选择，无惧 429 错误。</p>
           </div>
 
           <div className="bg-white p-8 rounded-2xl border border-[#72796e]/5 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform duration-300 hover:border-[#2d5a27]/20 hover:shadow-xl">
             <div className="w-12 h-12 bg-[#2d5a27]/5 text-[#2d5a27] rounded-xl flex items-center justify-center mb-6">
               <MdHub className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-semibold text-[#151c27] mb-3">多种供应商</h3>
-            <p className="text-[#5c5f5e]">原生支持广泛的全球服务提供商集成，满足多样化业务需求。</p>
+            <h3 className="text-xl font-semibold text-[#151c27] mb-3">统一接口</h3>
+            <p className="text-[#5c5f5e]">文本生成、图像生成等能力一手掌控，告别多平台切换。</p>
           </div>
 
           <div className="bg-white p-8 rounded-2xl border border-[#72796e]/5 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform duration-300 hover:border-[#2d5a27]/20 hover:shadow-xl">
@@ -34,23 +35,40 @@ export default function Features() {
               <MdSecurity className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-semibold text-[#151c27] mb-3">协议兼容</h3>
-            <p className="text-[#5c5f5e]">深度优化，完美适配多种标准传输协议，保障极速响应。</p>
+            <p className="text-[#5c5f5e]">全面兼容 OpenAI 与 Anthropic 协议，无缝接入，保障极速响应。</p>
           </div>
 
           <div className="bg-white p-8 rounded-2xl border border-[#72796e]/5 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform duration-300 hover:border-[#2d5a27]/20 hover:shadow-xl">
+            <div className="w-12 h-12 bg-[#2d5a27]/5 text-[#2d5a27] rounded-xl flex items-center justify-center mb-6">
+              <MdKey className="w-6 h-6" />
+            </div>
+            <h3 className="text-xl font-semibold text-[#151c27] mb-3">多Key支持</h3>
+            <p className="text-[#5c5f5e]">单一供应商可同时配置多个API密钥，实现负载均衡与自动故障转移。</p>
+          </div>
+
+          <div className="bg-white p-8 rounded-2xl border border-[#72796e]/5 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform duration-300 hover:border-[#2d5a27]/20 hover:shadow-xl lg:col-start-2">
             <div className="w-12 h-12 bg-[#2d5a27]/5 text-[#2d5a27] rounded-xl flex items-center justify-center mb-6">
               <MdDashboard className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-semibold text-[#151c27] mb-3">界面友好</h3>
             <p className="text-[#5c5f5e]">直观且现代的用户交互界面，让复杂的操作变得简单自然。</p>
           </div>
+
+          <div className="bg-white p-8 rounded-2xl border border-[#72796e]/5 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform duration-300 hover:border-[#2d5a27]/20 hover:shadow-xl">
+            <div className="w-12 h-12 bg-[#2d5a27]/5 text-[#2d5a27] rounded-xl flex items-center justify-center mb-6">
+              <MdBarChart className="w-6 h-6" />
+            </div>
+            <h3 className="text-xl font-semibold text-[#151c27] mb-3">用量统计</h3>
+            <p className="text-[#5c5f5e]">实时监控所有模型的输入输出数据，让每一笔消耗都清晰可见。</p>
+          </div>
         </div>
 
         {/* Workflow Section */}
         <div className="mt-16 pt-16 border-t border-[#72796e]/5">
-          <div className="text-center mb-12">
-            <h4 className="text-2xl font-semibold text-[#151c27] mb-4">工作流程</h4>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-[#151c27] mb-4">三步上手</h2>
             <div className="w-16 h-1 bg-[#2d5a27] mx-auto rounded-full" />
+            <p className="text-[#5c5f5e] mt-6">无需复杂的配置，几分钟即可开始使用。</p>
           </div>
 
           <div className="relative flex flex-col md:flex-row justify-between items-center max-w-4xl mx-auto gap-8 md:gap-4">
