@@ -9,7 +9,12 @@ export default function Footer() {
               className="w-8 h-8 object-contain"
               src="/logo.png"
             />
-            <span className="font-semibold text-[#154212]">LLM Admin</span>
+            <div className="flex items-center gap-2">
+              <span className="font-semibold text-[#154212]">LLM Admin</span>
+              <span className="text-xs text-[#5c5f5e] font-medium tracking-wide">
+                Your Chief LLM Partner
+              </span>
+            </div>
           </div>
           <p className="text-sm text-[#5c5f5e] opacity-80 max-w-xs text-center md:text-left">
             © 2026 LLM Admin. All rights reserved. Built for precision.
