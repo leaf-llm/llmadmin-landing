@@ -50,7 +50,7 @@ export default function CTA() {
           <h2 className="text-3xl font-bold text-[#151c27] mb-4">准备开始了吗？</h2>
           <div className="w-16 h-1 bg-[#2d5a27] mx-auto rounded-full mb-6" />
           <p className="text-[#5c5f5e] text-lg mb-10 max-w-xl mx-auto">
-            立即下载 LLM Admin，体验统一的大模型管理与分发平台。
+            立即下载 LLM Admin，守护你的每一次请求。
           </p>
           <div className="inline-flex flex-col items-center">
             <a

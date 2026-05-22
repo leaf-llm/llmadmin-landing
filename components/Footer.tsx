@@ -17,22 +17,22 @@ export default function Footer() {
             </div>
           </div>
           <p className="text-sm text-[#5c5f5e] opacity-80 max-w-xs text-center md:text-left">
-            © 2026 LLM Admin. All rights reserved. Built for precision.
+            © 2026 LLM Admin. 保留所有权利。精确构建。
           </p>
         </div>
 
         <div className="flex flex-wrap justify-center gap-8 md:gap-10">
           <a className="text-sm text-[#5c5f5e] hover:text-[#154212] transition-colors" href="/privacy">
-            Privacy Policy
+            隐私政策
           </a>
           <a className="text-sm text-[#5c5f5e] hover:text-[#154212] transition-colors" href="/terms">
-            Terms of Service
+            服务条款
           </a>
           <a className="text-sm text-[#5c5f5e] hover:text-[#154212] transition-colors" href="/tutorials">
-            Documentation
+            文档
           </a>
           <a className="text-sm text-[#5c5f5e] hover:text-[#154212] transition-colors" href="mailto:support@llmadmin.dev">
-            Contact Us
+            联系我们
           </a>
         </div>
       </div>

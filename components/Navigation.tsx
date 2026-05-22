@@ -47,23 +47,23 @@ export default function Navigation() {
           className={isActive("/") ? "text-[#154212] dark:text-[#a1d494] font-semibold border-b-2 border-[#154212] transition-all text-sm" : "text-[#5c5f5e] dark:text-[#c5c7c6] hover:text-[#154212] dark:hover:text-[#a1d494] transition-colors text-sm"}
           href="/#download"
         >
-          Overview
+          概览
         </a>
         <a
           className={featuresActive && pathname === "/" ? "text-[#154212] dark:text-[#a1d494] font-semibold border-b-2 border-[#154212] transition-all text-sm" : "text-[#5c5f5e] dark:text-[#c5c7c6] hover:text-[#154212] dark:hover:text-[#a1d494] transition-colors text-sm"}
           href="/#features"
         >
-          Features
+          特性
         </a>
         <a
           className={isActive("/tutorials") ? "text-[#154212] dark:text-[#a1d494] font-semibold border-b-2 border-[#154212] transition-all text-sm" : "text-[#5c5f5e] dark:text-[#c5c7c6] hover:text-[#154212] dark:hover:text-[#a1d494] transition-colors text-sm"}
           href="/tutorials"
         >
-          Tutorials
+          教程
         </a>
       </div>
       <button className="bg-[#2d5a27] text-white text-sm px-6 py-2.5 rounded-full hover:opacity-90 transition-all scale-95 active:scale-90 hover:shadow-lg">
-        Get Started
+        立即开始
       </button>
     </nav>
   );

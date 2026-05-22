@@ -57,13 +57,11 @@ LLM Admin 将您的模型编排为一支全天候待命的 AI 团队。它调度
         </div>
         <div className="relative">
           <div className="absolute inset-0 bg-[#2d5a27]/5 blur-[120px] rounded-full -z-10 transform scale-75" />
-          <div className="rounded-2xl overflow-hidden border border-[#72796e]/10 soft-shadow bg-white p-2 md:p-3">
-            <img
+          <img
               alt="LLM Admin Dashboard Preview"
-              className="w-full h-auto rounded-lg shadow-sm"
-              src="/logo.png"
+              className="w-full h-auto scale-110"
+              src="/screen.png"
             />
-          </div>
         </div>
       </div>
     </section>

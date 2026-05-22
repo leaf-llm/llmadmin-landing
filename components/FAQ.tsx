@@ -17,7 +17,7 @@ const faqs = [
   {
     question: "统一接口是什么？",
     answer:
-      "统一接口将不同供应商（如 OpenAI、Anthropic、国产模型等）的 API 标准化，一次接入即可调用所有模型，告别多套 API 的维护成本。",
+      "统一接口将不同供应商（如 OpenAI、Anthropic、国产模型等）的 API 标准化，不管 Endpoint 是什么协议，都能无缝连接，一次接入即可调用所有模型，告别多套 API 的维护成本。",
   },
   {
     question: "具体路由的规则是怎样的？",
