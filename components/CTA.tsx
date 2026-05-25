@@ -6,19 +6,19 @@ import { Apple } from "@lobehub/icons";
 
 const DOWNLOADS: Record<string, { url: string; icon: React.ReactNode; label: string; version: string }> = {
   Windows: {
-    url: "https://github.com/llmadmin/llmadmin/releases/latest/download/llmadmin-windows-amd64.exe",
+    url: "/api/download?platform=windows",
     icon: <FaWindows size={20} />,
     label: "Windows (.exe)",
     version: "Windows 10/11",
   },
   macOS: {
-    url: "https://github.com/llmadmin/llmadmin/releases/latest/download/llmadmin-darwin-arm64.dmg",
+    url: "/api/download?platform=macos",
     icon: <Apple size={20} />,
-    label: "macOS Intel (.dmg)",
+    label: "macOS (.dmg)",
     version: "macOS 12+",
   },
   Linux: {
-    url: "https://github.com/llmadmin/llmadmin/releases/latest/download/llmadmin-linux-amd64.deb",
+    url: "/api/download?platform=linux",
     icon: <FaUbuntu size={20} />,
     label: "Linux (.deb)",
     version: "Ubuntu 20.04+",

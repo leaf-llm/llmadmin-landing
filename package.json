@@ -6,12 +6,14 @@
     "dev": "next dev --webpack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "npm run build && wrangler pages deploy out --project-name=llmadmin-landing",
+    "dev:pages": "npm run build && wrangler pages dev out --port 8788"
   },
   "dependencies": {
     "@lobehub/icons": "^5.8.0",
     "framer-motion": "^11.15.0",
-    "next": "latest",
+    "next": "^15.5.18",
     "react": "latest",
     "react-dom": "latest",
     "react-icons": "^5.6.0"
@@ -22,6 +24,7 @@
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "tailwindcss": "latest",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "wrangler": "^4.93.1"
   }
 }

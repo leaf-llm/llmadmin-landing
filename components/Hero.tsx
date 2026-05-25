@@ -33,24 +33,24 @@ LLM Admin 将您的模型编排为一支全天候待命的 AI 团队。它调度
           </p>
           <div className="flex flex-row flex-nowrap gap-4 pt-4">
             <div className="flex-1 flex flex-col items-center">
-              <button className="w-full flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-4 py-3 rounded-xl hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg text-sm font-medium cursor-pointer">
+              <a href="/api/download?platform=windows" className="w-full flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-4 py-3 rounded-xl hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg text-sm font-medium cursor-pointer">
                 <FaWindows size={20} />
                 Windows (.exe)
-              </button>
+              </a>
               <span className="mt-2 text-xs text-[#5c5f5e]">* Windows 10/11</span>
             </div>
             <div className="flex-1 flex flex-col items-center">
-              <button className="w-full flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-4 py-3 rounded-xl hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg text-sm font-medium cursor-pointer">
+              <a href="/api/download?platform=macos" className="w-full flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-4 py-3 rounded-xl hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg text-sm font-medium cursor-pointer">
                 <Apple size={20} />
                 macOS (.dmg)
-              </button>
+              </a>
               <span className="mt-2 text-xs text-[#5c5f5e]">* Intel (macOS 12+)</span>
             </div>
             <div className="flex-1 flex flex-col items-center">
-              <button className="w-full flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-4 py-3 rounded-xl hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg text-sm font-medium cursor-pointer">
+              <a href="/api/download?platform=linux" className="w-full flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-4 py-3 rounded-xl hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg text-sm font-medium cursor-pointer">
                 <FaUbuntu size={20} />
                 Linux (.deb)
-              </button>
+              </a>
               <span className="mt-2 text-xs text-[#5c5f5e]">* Ubuntu 20.04+</span>
             </div>
           </div>
