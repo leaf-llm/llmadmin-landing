@@ -2,7 +2,7 @@
 
 import { Apple } from '@lobehub/icons';
 import { FaWindows, FaUbuntu } from 'react-icons/fa';
-import { useMemo } from 'react';
+import { useEffect, useState } from 'react';
 
 async function generateSignedUrl(platform: string): Promise<string> {
   const timestamp = Date.now();
@@ -28,11 +28,21 @@ async function generateSignedUrl(platform: string): Promise<string> {
 }
 
 export default function Hero() {
-  const downloadUrls = useMemo(() => ({
-    windows: generateSignedUrl("windows"),
-    macos: generateSignedUrl("macos"),
-    linux: generateSignedUrl("linux"),
-  }), []);
+  const [urls, setUrls] = useState<{ windows: string; macos: string; linux: string }>({
+    windows: "#",
+    macos: "#",
+    linux: "#",
+  });
+
+  useEffect(() => {
+    Promise.all([
+      generateSignedUrl("windows"),
+      generateSignedUrl("macos"),
+      generateSignedUrl("linux"),
+    ]).then(([windows, macos, linux]) => {
+      setUrls({ windows, macos, linux });
+    });
+  }, []);
 
   return (
     <section id="download" className="pt-[160px] pb-20 px-4 md:px-6 max-w-[1200px] mx-auto scroll-mt-20">
@@ -63,21 +73,21 @@ LLM Admin 将您的模型编排为一支全天候待命的 AI 团队。它调度
           </p>
           <div className="flex flex-row flex-nowrap gap-4 pt-4">
             <div className="flex-1 flex flex-col items-center">
-              <a href={downloadUrls.windows} className="w-full flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-4 py-3 rounded-xl hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg text-sm font-medium cursor-pointer">
+              <a href={urls.windows} className="w-full flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-4 py-3 rounded-xl hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg text-sm font-medium cursor-pointer">
                 <FaWindows size={20} />
                 Windows (.exe)
               </a>
               <span className="mt-2 text-xs text-[#5c5f5e]">* Windows 10/11</span>
             </div>
             <div className="flex-1 flex flex-col items-center">
-              <a href={downloadUrls.macos} className="w-full flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-4 py-3 rounded-xl hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg text-sm font-medium cursor-pointer">
+              <a href={urls.macos} className="w-full flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-4 py-3 rounded-xl hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg text-sm font-medium cursor-pointer">
                 <Apple size={20} />
                 macOS (.dmg)
               </a>
               <span className="mt-2 text-xs text-[#5c5f5e]">* (Intel) macOS 12+</span>
             </div>
             <div className="flex-1 flex flex-col items-center">
-              <a href={downloadUrls.linux} className="w-full flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-4 py-3 rounded-xl hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg text-sm font-medium cursor-pointer">
+              <a href={urls.linux} className="w-full flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-4 py-3 rounded-xl hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg text-sm font-medium cursor-pointer">
                 <FaUbuntu size={20} />
                 Linux (.deb)
               </a>
