@@ -36,6 +36,22 @@ function getClientIp(request: Request): string {
   return "unknown";
 }
 
+function checkSuspiciousReferer(request: Request): boolean {
+  const referer = request.headers.get("Referer");
+  const host = request.headers.get("Host");
+
+  if (!referer) {
+    return true;
+  }
+
+  try {
+    const refererUrl = new URL(referer);
+    return refererUrl.host !== host;
+  } catch {
+    return true;
+  }
+}
+
 async function checkRateLimit(env: Env, ip: string): Promise<{ allowed: boolean; remaining: number }> {
   const key = `rate:${ip}`;
   const val = await env.DOWNLOAD_KV.get(key);
@@ -62,7 +78,7 @@ async function incrementRateLimit(env: Env, ip: string): Promise<void> {
 
 async function logToLogflare(
   env: Env,
-  data: { platform: string; ip: string; referer: string | null; userAgent: string | null; blocked: boolean }
+  data: { platform: string; ip: string; referer: string | null; userAgent: string | null; blocked: boolean; suspiciousReferer: boolean }
 ): Promise<void> {
   const apiKey = env.LOGFLARE_API_KEY;
   const sourceId = env.LOGFLARE_SOURCE_ID;
@@ -79,6 +95,7 @@ async function logToLogflare(
       referer: data.referer,
       userAgent: data.userAgent,
       blocked: data.blocked,
+      suspiciousReferer: data.suspiciousReferer,
       timestamp: new Date().toISOString(),
     },
   };
@@ -99,10 +116,11 @@ async function logToLogflare(
 
 export async function onRequestGet({ request, env, waitUntil }: { request: Request; env: Env; waitUntil: (promise: Promise<void>) => void }) {
   const url = new URL(request.url);
-  const platform = url.searchParams.get("platform")?.toLowerCase();
+  const platform = url.searchParams.get("p")?.toLowerCase();
   const ip = getClientIp(request);
   const referer = request.headers.get("Referer");
   const userAgent = request.headers.get("User-Agent");
+  const suspiciousReferer = checkSuspiciousReferer(request);
 
   if (!platform || !PLATFORM_MAP[platform]) {
     return new Response("Unknown platform", { status: 400 });
@@ -116,6 +134,7 @@ export async function onRequestGet({ request, env, waitUntil }: { request: Reque
       referer,
       userAgent,
       blocked: true,
+      suspiciousReferer,
     }));
     return new Response("Rate limit exceeded", { status: 429 });
   }
@@ -139,6 +158,7 @@ export async function onRequestGet({ request, env, waitUntil }: { request: Reque
     referer,
     userAgent,
     blocked: false,
+    suspiciousReferer,
   }));
 
   const ext = key.slice(key.lastIndexOf("."));

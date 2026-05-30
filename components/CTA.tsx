@@ -1,24 +1,25 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { FaWindows, FaUbuntu } from "react-icons/fa";
 import { Apple } from "@lobehub/icons";
 
-const DOWNLOADS: Record<string, { url: string; icon: React.ReactNode; label: string; version: string }> = {
+function generateToken(): string {
+  return Math.random().toString(36).slice(2) + Date.now().toString(36);
+}
+
+const DOWNLOADS: Record<string, { icon: React.ReactNode; label: string; version: string }> = {
   Windows: {
-    url: "/api/download?platform=windows",
     icon: <FaWindows size={20} />,
     label: "Windows (.exe)",
     version: "Windows 10/11",
   },
   macOS: {
-    url: "/api/download?platform=macos",
     icon: <Apple size={20} />,
     label: "macOS (.dmg)",
     version: "(Intel) macOS 12+",
   },
   Linux: {
-    url: "/api/download?platform=linux",
     icon: <FaUbuntu size={20} />,
     label: "Linux (.deb)",
     version: "Ubuntu 20.04+",
@@ -34,12 +35,22 @@ function detectOS(): string {
   return "Windows";
 }
 
+function getPlatformKey(os: string): string {
+  if (os === "macOS") return "macos";
+  return os.toLowerCase();
+}
+
 export default function CTA() {
   const [os, setOs] = useState<string>("Windows");
 
   useEffect(() => {
     setOs(detectOS());
   }, []);
+
+  const downloadUrl = useMemo(() => {
+    const platform = getPlatformKey(os);
+    return `/api/download?token=${generateToken()}&p=${platform}`;
+  }, [os]);
 
   const download = DOWNLOADS[os];
 
@@ -54,7 +65,7 @@ export default function CTA() {
           </p>
           <div className="inline-flex flex-col items-center">
             <a
-              href={download.url}
+              href={downloadUrl}
               className="inline-flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg cursor-pointer"
             >
               {download.icon}
