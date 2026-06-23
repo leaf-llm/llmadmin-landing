@@ -13,7 +13,7 @@ export default function Features() {
         </div>
 
         {/* Feature Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="bg-white p-8 rounded-2xl border border-[#72796e]/5 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform duration-300 hover:border-[#2d5a27]/20 hover:shadow-xl">
             <div className="w-12 h-12 bg-[#2d5a27]/5 text-[#2d5a27] rounded-xl flex items-center justify-center mb-6">
               <MdRoute className="w-6 h-6" />
@@ -46,7 +46,7 @@ export default function Features() {
             <p className="text-[#5c5f5e]">单一供应商可同时配置多个API密钥，实现负载均衡与自动故障转移。</p>
           </div>
 
-          <div className="bg-white p-8 rounded-2xl border border-[#72796e]/5 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform duration-300 hover:border-[#2d5a27]/20 hover:shadow-xl lg:col-start-2">
+          <div className="bg-white p-8 rounded-2xl border border-[#72796e]/5 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform duration-300 hover:border-[#2d5a27]/20 hover:shadow-xl">
             <div className="w-12 h-12 bg-[#2d5a27]/5 text-[#2d5a27] rounded-xl flex items-center justify-center mb-6">
               <MdDashboard className="w-6 h-6" />
             </div>

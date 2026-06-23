@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { FaGithub } from "react-icons/fa";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -62,9 +63,20 @@ export default function Navigation() {
           教程
         </a>
       </div>
-      <a href="/#download" className="bg-[#2d5a27] text-white text-sm px-6 py-2.5 rounded-full hover:opacity-90 transition-all scale-95 active:scale-90 hover:shadow-lg">
-        立即开始
-      </a>
+      <div className="flex items-center gap-3">
+        <a
+          href="https://github.com/leaf-llm/llmadmin-core"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1.5 text-[#2d5a27] dark:text-[#a1d494] text-sm px-4 py-2 rounded-full hover:underline underline-offset-4 transition-colors"
+        >
+          <FaGithub size={16} />
+          GitHub
+        </a>
+        <a href="/#download" className="bg-[#2d5a27] text-white text-sm px-6 py-2.5 rounded-full hover:opacity-90 transition-all scale-95 active:scale-90 hover:shadow-lg">
+          立即开始
+        </a>
+      </div>
     </nav>
   );
 }
