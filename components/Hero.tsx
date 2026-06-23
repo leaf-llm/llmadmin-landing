@@ -9,31 +9,15 @@ export default function Hero() {
   const token = useDownloadToken();
 
   return (
-    <section id="download" className="pt-[160px] pb-20 px-4 md:px-6 max-w-[1200px] mx-auto scroll-mt-20">
+    <section id="download" className="pt-[200px] md:pt-[220px] lg:pt-[240px] pb-20 px-4 md:px-6 max-w-[1200px] mx-auto scroll-mt-20">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center text-left">
         <div className="space-y-8">
-          <h1 className="text-5xl md:text-6xl lg:text-[64px] leading-tight font-bold text-[#151c27] tracking-tight">
-            一个接口
-            <div className="pl-[1.5em]">
-              两种
-              <span className="inline-flex flex-col h-[1.2em] overflow-hidden">
-                <span className="animate-text-slide text-left">
-                  <span className="text-[#2d5a27]">协议</span>
-                  <br />
-                  <span className="text-[#2d5a27]">OpenAI</span>
-                  <br />
-                  <span className="text-[#2d5a27]">Anthropic</span>
-                  <br />
-                  <span className="text-[#2d5a27]">协议</span>
-                </span>
-              </span>
-            </div>
-            <div className="pl-[3em]">
-              <span className="text-[#2d5a27]">任意模型</span>
-            </div>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl leading-tight font-bold text-[#151c27] tracking-tight space-y-1 whitespace-nowrap">
+            <div>守护每一次请求</div>
+            <div className="text-[#2d5a27]">最省钱可靠的模型搭档</div>
           </h1>
           <p className="text-xl text-[#5c5f5e] leading-relaxed max-w-xl">
-LLM Admin 将您的模型编排为一支全天候待命的 AI 团队。它调度、切换、守护每一次请求。您只管使用 —— 无惧网络波动。
+            专为主流 AI 供应商而生，完全本地化。通过精确缓存节省用量，调度、切换、守护每一次请求。
           </p>
           <div className="flex flex-row flex-nowrap gap-4 pt-4">
             <div className="flex-1 flex flex-col items-center">
@@ -60,7 +44,7 @@ LLM Admin 将您的模型编排为一支全天候待命的 AI 团队。它调度
           </div>
         </div>
         <div className="relative">
-          <div className="absolute inset-0 bg-[#2d5a27]/5 blur-[120px] rounded-full -z-10 transform scale-75" />
+          <div className="absolute inset-0 bg-[#2d5a27]/5 blur-[120px] rounded-full -z-10 transform scale-50" />
           <img
               alt="LLM Admin Dashboard Preview"
               className="w-full h-auto scale-110"

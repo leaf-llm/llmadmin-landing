@@ -71,17 +71,6 @@
     box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.04);
   }
 
-  @keyframes text-slide {
-    0%, 20% { transform: translateY(0); }
-    25%, 45% { transform: translateY(-25%); }
-    50%, 70% { transform: translateY(-50%); }
-    75%, 100% { transform: translateY(-75%); }
-  }
-
-  .animate-text-slide {
-    animation: text-slide 6s cubic-bezier(0.83, 0, 0.17, 1) infinite;
-  }
-
   @keyframes flow {
     0% { stroke-dashoffset: 200; opacity: 0; }
     20% { opacity: 1; }
