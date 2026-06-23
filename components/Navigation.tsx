@@ -65,7 +65,7 @@ export default function Navigation() {
       </div>
       <div className="flex items-center gap-3">
         <a
-          href="https://github.com/leaf-llm/llmadmin-core"
+          href="https://github.com/leaf-llm/llmadmin-ui"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-1.5 text-[#2d5a27] dark:text-[#a1d494] text-sm px-4 py-2 rounded-full hover:underline underline-offset-4 transition-colors"
