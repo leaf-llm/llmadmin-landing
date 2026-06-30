@@ -11,7 +11,10 @@ export default function Hero() {
   return (
     <section id="download" className="pt-[200px] md:pt-[220px] lg:pt-[240px] pb-20 px-4 md:px-6 max-w-[1200px] mx-auto scroll-mt-20">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center text-left">
-        <div className="space-y-8">
+        <div className="relative space-y-8">
+          <span className="absolute -top-14 left-0 inline-block text-sm font-medium px-3 py-1.5 rounded-full bg-[#2d5a27]/10 text-[#2d5a27]">
+            v0.1.0 已发布
+          </span>
           <h1 className="text-3xl md:text-4xl lg:text-5xl leading-tight font-bold text-[#151c27] tracking-tight space-y-1 whitespace-nowrap">
             <div>守护每一次请求</div>
             <div className="text-[#2d5a27]">最省钱可靠的模型搭档</div>
