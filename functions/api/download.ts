@@ -6,7 +6,7 @@ interface Env {
 const PLATFORM_MAP: Record<string, string> = {
   windows: "llm-admin.exe",
   macos: "llm-admin_x64.dmg",
-  linux: "llm-admin_0.1.0_amd64.deb",
+  linux: "llm-admin_amd64.deb",
 };
 
 const CONTENT_TYPES: Record<string, string> = {
