@@ -15,9 +15,9 @@ export default function Hero() {
           <span className="absolute -top-14 left-0 inline-block text-sm font-medium px-3 py-1.5 rounded-full bg-[#2d5a27]/10 text-[#2d5a27]">
             v0.1.0 已发布
           </span>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl leading-tight font-bold text-[#151c27] tracking-tight space-y-1 whitespace-nowrap">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl leading-tight font-bold text-[#151c27] tracking-tight space-y-1">
             <div>守护每一次请求</div>
-            <div className="text-[#2d5a27]">最省钱可靠的模型搭档</div>
+            <div className="text-[#2d5a27]">省钱又省心的模型搭档</div>
           </h1>
           <p className="text-xl text-[#5c5f5e] leading-relaxed max-w-xl">
             专为主流 AI 供应商而生，完全本地化。通过精确缓存节省用量，调度、切换、守护每一次请求。

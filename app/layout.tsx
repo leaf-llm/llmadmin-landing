@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const HERO_DESCRIPTION =
+  "LLM Admin 是您省钱又省心的模型搭档：精确缓存降低用量，本地化调度无缝切换主流 AI 供应商，无惧网络波动。";
+
 export const metadata: Metadata = {
   title: "LLM Admin - Your Chief LLM Partner",
-  description:
-    "LLM Admin 将您的模型编排为一支全天候待命的 AI 团队。它调度、切换、守护每一次请求。您只管使用 —— 无惧网络波动。",
+  description: HERO_DESCRIPTION,
   keywords: ["LLM Admin", "AI", "模型编排", "LLM", "OpenAI", "Anthropic", "API"],
   metadataBase: new URL("https://llmadmin.dev"),
   alternates: {
@@ -16,8 +18,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "LLM Admin - Your Chief LLM Partner",
-    description:
-      "LLM Admin 将您的模型编排为一支全天候待命的 AI 团队。它调度、切换、守护每一次请求。",
+    description: HERO_DESCRIPTION,
     url: "https://llmadmin.dev",
     siteName: "LLM Admin",
     images: [
@@ -34,8 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "LLM Admin - Your Chief LLM Partner",
-    description:
-      "LLM Admin 将您的模型编排为一支全天候待命的 AI 团队。它调度、切换、守护每一次请求。",
+    description: HERO_DESCRIPTION,
     images: ["/og-image.png"],
   },
   icons: {
