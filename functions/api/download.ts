@@ -16,7 +16,7 @@ const CONTENT_TYPES: Record<string, string> = {
 };
 
 const RATE_LIMIT = 5;
-const RATE_WINDOW_SECONDS = 60;
+const RATE_WINDOW_SECONDS = 60 * 30; // 30 minutes
 
 function getClientIp(request: Request): string {
   const cf = request.cf;
@@ -51,11 +51,8 @@ async function incrementRateLimit(env: Env, ip: string): Promise<void> {
   const val = await env.DOWNLOAD_KV.get(key);
   const count = parseInt(val || "0", 10) + 1;
 
-  if (count === 1) {
-    await env.DOWNLOAD_KV.put(key, String(count), { expirationTtl: RATE_WINDOW_SECONDS });
-  } else {
-    await env.DOWNLOAD_KV.put(key, String(count));
-  }
+  // Always set the TTL on every write so a key can never end up without one
+  await env.DOWNLOAD_KV.put(key, String(count), { expirationTtl: RATE_WINDOW_SECONDS });
 }
 
 export async function onRequestGet({ request, env }: { request: Request; env: Env }) {
