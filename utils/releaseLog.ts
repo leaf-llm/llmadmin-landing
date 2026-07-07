@@ -52,9 +52,9 @@ export function parseReleaseLog(content: string): ReleaseEntry[] {
 
     const version = match[1];
     const dateRaw = match[2].trim();
-    const isPending = dateRaw === "待发布";
+    const isPending = dateRaw === "pre-release" || dateRaw === "待发布";
     const dateObj = isPending ? null : new Date(dateRaw);
-    const date = isPending ? "待发布" : dateRaw;
+    const date = isPending ? "pre-release" : dateRaw;
 
     const groups: ReleaseGroups = { added: [], fixed: [], improved: [] };
     for (let i = 1; i < lines.length; i++) {

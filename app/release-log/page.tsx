@@ -21,7 +21,7 @@ const GROUP_ORDER: Array<{ key: keyof ReleaseGroups; label: string; color: strin
 ];
 
 function formatDate(entry: ReleaseEntry): string {
-  if (entry.isPending || !entry.dateObj) return "待发布";
+  if (entry.isPending || !entry.dateObj) return "pre-release";
   return DATE_FORMATTER.format(entry.dateObj);
 }
 
@@ -33,7 +33,7 @@ function ReleaseSection({ entry, isLatest }: { entry: ReleaseEntry; isLatest: bo
           <h2 className="text-2xl font-bold text-[#154212]">{entry.version}</h2>
           {entry.isPending && (
             <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-[#ffb0cc]/40 text-[#60233e]">
-              待发布
+              pre-release
             </span>
           )}
           {!entry.isPending && isLatest && (
@@ -43,7 +43,7 @@ function ReleaseSection({ entry, isLatest }: { entry: ReleaseEntry; isLatest: bo
           )}
         </div>
         {entry.isPending ? (
-          <span className="text-sm text-[#5c5f5e]">待发布</span>
+          <span className="text-sm text-[#5c5f5e]">pre-release</span>
         ) : (
           <time
             dateTime={entry.date}
@@ -105,7 +105,7 @@ export default function ReleaseLog() {
         ) : (
           <div className="space-y-8">
             {releases.map((entry, idx) => {
-              // 待发布项永远视为"最新",其余按数组下标
+              // pre-release 项永远视为"最新",其余按数组下标
               const isLatest = entry.isPending || idx === 0;
               return (
                 <ReleaseSection

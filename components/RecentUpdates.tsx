@@ -28,7 +28,7 @@ const DATE_FORMATTER = new Intl.DateTimeFormat("zh-CN", {
 });
 
 function formatDate(entry: ReleaseEntry): string {
-  if (entry.isPending || !entry.dateObj) return "待发布";
+  if (entry.isPending || !entry.dateObj) return "pre-release";
   return DATE_FORMATTER.format(entry.dateObj);
 }
 
@@ -66,12 +66,12 @@ export default function RecentUpdates({ entries }: { entries: ReleaseEntry[] }) 
                     </span>
                     {entry.isPending && (
                       <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-[#ffb0cc]/40 text-[#60233e]">
-                        待发布
+                        pre-release
                       </span>
                     )}
                   </div>
                   {entry.isPending ? (
-                    <span className="text-sm text-[#5c5f5e]">待发布</span>
+                    <span className="text-sm text-[#5c5f5e]">pre-release</span>
                   ) : (
                     <time
                       dateTime={entry.date}
