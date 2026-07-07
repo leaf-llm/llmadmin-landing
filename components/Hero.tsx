@@ -35,7 +35,7 @@ export default function Hero() {
                 <Apple size={20} />
                 macOS (.dmg)
               </a>
-              <span className="mt-2 text-xs text-[#5c5f5e]">* macOS 12+ (Intel/Apple Silicon)</span>
+              <span className="mt-2 text-xs text-[#5c5f5e] whitespace-nowrap">* macOS 12+ (Intel/Apple Silicon)</span>
             </div>
             <div className="flex-1 flex flex-col items-center">
               <a href={`/api/download?platform=linux&token=${token}`} onClick={(e) => handleDownloadClick(e, "linux", "hero")} className="w-full flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-4 py-3 rounded-xl hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg text-sm font-medium cursor-pointer">

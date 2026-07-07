@@ -64,7 +64,7 @@ export default function CTA() {
               {download.icon}
               立即下载 {download.label}
             </a>
-            <span className="mt-2 text-xs text-[#5c5f5e]">* {download.version}</span>
+            <span className="mt-2 text-xs text-[#5c5f5e] whitespace-nowrap">* {download.version}</span>
           </div>
         </div>
       </div>
