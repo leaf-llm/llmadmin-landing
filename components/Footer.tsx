@@ -31,6 +31,9 @@ export default function Footer() {
           <a className="text-sm text-[#5c5f5e] hover:text-[#154212] transition-colors" href="/tutorials">
             文档
           </a>
+          <a className="text-sm text-[#5c5f5e] hover:text-[#154212] transition-colors" href="/release-log">
+            更新日志
+          </a>
           <a className="text-sm text-[#5c5f5e] hover:text-[#154212] transition-colors" href="mailto:support@llmadmin.dev">
             联系我们
           </a>

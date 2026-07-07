@@ -16,6 +16,9 @@ export default function WhyChooseUs() {
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-[#151c27] mb-4">为什么选择我们</h2>
           <div className="w-16 h-1 bg-[#2d5a27] mx-auto rounded-full" />
+          <p className="text-[#5c5f5e] mt-6 max-w-xl mx-auto">
+            从代码到调度，每一环都为你的模型调用保驾护航。
+          </p>
         </div>
 
         <div className="max-w-2xl mx-auto bg-white p-8 rounded-2xl border border-[#72796e]/5 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.04)]">
