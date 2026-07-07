@@ -11,7 +11,7 @@ const DOWNLOADS: Record<string, { url: string; icon: React.ReactNode; label: str
     url: "/api/download?platform=windows",
     icon: <FaWindows size={20} />,
     label: "Windows (.exe)",
-    version: "Windows 10/11",
+    version: "Windows 10/11 (x64)",
   },
   macOS: {
     url: "/api/download?platform=macos",
