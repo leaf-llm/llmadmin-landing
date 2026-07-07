@@ -17,7 +17,7 @@ const DOWNLOADS: Record<string, { url: string; icon: React.ReactNode; label: str
     url: "/api/download?platform=macos",
     icon: <Apple size={20} />,
     label: "macOS (.dmg)",
-    version: "(Intel) macOS 12+",
+    version: "macOS 12+",
   },
   Linux: {
     url: "/api/download?platform=linux",
