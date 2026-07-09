@@ -27,18 +27,30 @@ export function sendDownloadBeacon(platform: Platform, component: Component): vo
   }
 }
 
-export function handleDownloadClick(
+export async function handleDownloadClick(
   e: React.MouseEvent<HTMLAnchorElement>,
   platform: Platform,
   component: Component,
-): void {
-  const href = e.currentTarget.href;
+  ensureToken: () => Promise<string>,
+): Promise<void> {
   const isNormalClick = e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey;
 
+  // Beacon fires for every click variant (normal, ctrl/cmd/shift, middle-click).
   sendDownloadBeacon(platform, component);
 
-  if (isNormalClick) {
-    e.preventDefault();
-    window.location.href = href;
+  if (!isNormalClick) {
+    // Let the browser handle it (new tab, etc.) using the token already in href.
+    return;
+  }
+
+  // Must run synchronously before any await, otherwise the browser navigates first.
+  e.preventDefault();
+
+  try {
+    const token = await ensureToken();
+    window.location.href = `/api/download?platform=${platform}&token=${token}`;
+  } catch {
+    // Fallback: try the (possibly stale) token already in the href.
+    window.location.href = e.currentTarget.href;
   }
 }

@@ -37,7 +37,7 @@ function detectOS(): string {
 }
 
 export default function CTA() {
-  const token = useDownloadToken();
+  const { token, ensureToken } = useDownloadToken();
   const [os, setOs] = useState<string>("Windows");
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export default function CTA() {
           <div className="inline-flex flex-col items-center">
             <a
               href={`/api/download?platform=${os.toLowerCase()}&token=${token}`}
-              onClick={(e) => handleDownloadClick(e, os.toLowerCase() as "windows" | "macos" | "linux", "cta")}
+              onClick={(e) => handleDownloadClick(e, os.toLowerCase() as "windows" | "macos" | "linux", "cta", ensureToken)}
               className="inline-flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg cursor-pointer"
             >
               {download.icon}

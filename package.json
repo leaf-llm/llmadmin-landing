@@ -7,8 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "npm run build && wrangler pages deploy out --project-name=llmadmin-landing",
-    "dev:pages": "npm run build && wrangler pages dev out --port 8788"
+    "deploy": "npm run build && wrangler pages deploy out --project-name=llmadmin-landing --branch main",
+    "deploy:preview": "npm run build && wrangler pages deploy out --project-name=llmadmin-landing --branch preview",
+    "dev:pages": "npm run build && wrangler pages dev out --port 8788 --compatibility-date 2026-06-23 --kv DOWNLOAD_KV --r2 PACKAGES_BUCKET"
   },
   "dependencies": {
     "@lobehub/icons": "^5.8.0",
