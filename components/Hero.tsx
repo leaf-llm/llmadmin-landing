@@ -6,7 +6,7 @@ import { handleDownloadClick } from '@/utils/analytics';
 import { useDownloadToken } from '@/hooks/useDownloadToken';
 
 export default function Hero() {
-  const token = useDownloadToken();
+  const { token, ensureToken } = useDownloadToken();
 
   return (
     <section id="download" className="pt-[200px] md:pt-[220px] lg:pt-[240px] pb-20 px-4 md:px-6 max-w-[1200px] mx-auto scroll-mt-20">
@@ -24,21 +24,21 @@ export default function Hero() {
           </p>
           <div className="flex flex-row flex-nowrap gap-4 pt-4">
             <div className="flex-1 flex flex-col items-center">
-              <a href={`/api/download?platform=windows&token=${token}`} onClick={(e) => handleDownloadClick(e, "windows", "hero")} className="w-full flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-4 py-3 rounded-xl hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg text-sm font-medium cursor-pointer">
+              <a href={`/api/download?platform=windows&token=${token}`} onClick={(e) => handleDownloadClick(e, "windows", "hero", ensureToken)} className="w-full flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-4 py-3 rounded-xl hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg text-sm font-medium cursor-pointer">
                 <FaWindows size={20} />
                 Windows (.exe)
               </a>
               <span className="mt-2 text-xs text-[#5c5f5e] whitespace-nowrap">* Windows 10/11 (x64)</span>
             </div>
             <div className="flex-1 flex flex-col items-center">
-              <a href={`/api/download?platform=macos&token=${token}`} onClick={(e) => handleDownloadClick(e, "macos", "hero")} className="w-full flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-4 py-3 rounded-xl hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg text-sm font-medium cursor-pointer">
+              <a href={`/api/download?platform=macos&token=${token}`} onClick={(e) => handleDownloadClick(e, "macos", "hero", ensureToken)} className="w-full flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-4 py-3 rounded-xl hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg text-sm font-medium cursor-pointer">
                 <Apple size={20} />
                 macOS (.dmg)
               </a>
               <span className="mt-2 text-xs text-[#5c5f5e] whitespace-nowrap">* macOS 12+ (Intel/Apple Silicon)</span>
             </div>
             <div className="flex-1 flex flex-col items-center">
-              <a href={`/api/download?platform=linux&token=${token}`} onClick={(e) => handleDownloadClick(e, "linux", "hero")} className="w-full flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-4 py-3 rounded-xl hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg text-sm font-medium cursor-pointer">
+              <a href={`/api/download?platform=linux&token=${token}`} onClick={(e) => handleDownloadClick(e, "linux", "hero", ensureToken)} className="w-full flex items-center justify-center gap-2 bg-[#2d5a27] text-white px-4 py-3 rounded-xl hover:bg-[#154212] hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg text-sm font-medium cursor-pointer">
                 <FaUbuntu size={20} />
                 Linux (.deb)
               </a>
