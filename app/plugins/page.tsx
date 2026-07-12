@@ -18,39 +18,31 @@ export const metadata: Metadata = {
 function PluginCard({ plugin }: { plugin: Plugin }) {
   return (
     <div className="bg-white p-8 rounded-2xl border border-[#72796e]/5 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform duration-300 hover:border-[#2d5a27]/20 hover:shadow-xl flex flex-col">
-      <h3 className="text-xl font-semibold text-[#151c27] mb-2">{plugin.name}</h3>
-      <p className="text-sm text-[#5c5f5e] mb-1">{plugin.description}</p>
-      <p className="text-xs text-[#72796e] font-mono mb-4">{plugin.effect}</p>
-      <div className="flex flex-wrap gap-2 mb-4">
-        {plugin.tags.map((tag) => (
-          <span
-            key={tag}
-            className="text-xs font-medium px-2.5 py-1 rounded-full bg-[#2d5a27]/10 text-[#2d5a27]"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-      <div className="flex items-center gap-4 mt-auto">
-        {plugin.link && (
+      <div className="flex items-start justify-between mb-2">
+        <h3 className="text-xl font-semibold text-[#151c27]">{plugin.name}</h3>
+        <div className="flex items-center gap-3 shrink-0">
+          {plugin.link && (
+            <a
+              href={plugin.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm text-[#2d5a27] hover:text-[#154212] transition-colors"
+            >
+              官网 <MdOpenInNew className="w-4 h-4" />
+            </a>
+          )}
           <a
-            href={plugin.link}
+            href={`${GITHUB_PLUGINS_BASE}/${plugin.id}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 text-sm text-[#2d5a27] hover:text-[#154212] transition-colors"
           >
-            访问官网 <MdOpenInNew className="w-4 h-4" />
+            <FaGithub className="w-4 h-4" /> 源码
           </a>
-        )}
-        <a
-          href={`${GITHUB_PLUGINS_BASE}/${plugin.id}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-sm text-[#2d5a27] hover:text-[#154212] transition-colors"
-        >
-          <FaGithub className="w-4 h-4" /> 源码
-        </a>
+        </div>
       </div>
+      <p className="text-sm text-[#5c5f5e] mb-1">{plugin.description}</p>
+      <p className="text-xs text-[#72796e] font-mono mb-4 whitespace-pre-line">{plugin.effect}</p>
     </div>
   );
 }
