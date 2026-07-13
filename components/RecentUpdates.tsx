@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
-import { MdCheckCircle, MdBugReport, MdSpeed } from "react-icons/md";
+import { MdCheckCircle, MdBuild, MdSpeed } from "react-icons/md";
 import type { ReleaseEntry } from "@/utils/releaseLog";
 
 const GROUP_CONFIG = {
@@ -11,8 +11,8 @@ const GROUP_CONFIG = {
   },
   fixed: {
     label: "修复",
-    Icon: MdBugReport,
-    iconColor: "text-[#ba1a1a]",
+    Icon: MdBuild,
+    iconColor: "text-[#5c5f5e]",
   },
   improved: {
     label: "优化",
