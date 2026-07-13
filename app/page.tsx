@@ -7,15 +7,16 @@ import RecentUpdates from "@/components/RecentUpdates";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
-import { getRecentReleases } from "@/utils/releaseLog";
+import { getRecentReleases, getLatestVersionBadge } from "@/utils/releaseLog";
 
 export default function Home() {
   const recentReleases = getRecentReleases(3);
+  const latestBadge = getLatestVersionBadge();
 
   return (
     <main className="min-h-screen bg-[#f9f9ff] text-[#151c27]">
       <Navigation />
-      <Hero />
+      <Hero versionBadge={latestBadge} />
       <MarqueeSection />
       <Features />
       <WhyChooseUs />
