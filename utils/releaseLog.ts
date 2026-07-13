@@ -86,3 +86,11 @@ export function getAllReleases(): ReleaseEntry[] {
 export function getRecentReleases(count: number): ReleaseEntry[] {
   return getAllReleases().slice(0, count);
 }
+
+export function getLatestVersionBadge(): string {
+  const latest = getAllReleases()[0];
+  if (!latest) return "";
+  return latest.isPending
+    ? `${latest.version} pre-release`
+    : `${latest.version} 已发布`;
+}

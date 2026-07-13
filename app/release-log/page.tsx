@@ -16,7 +16,7 @@ const DATE_FORMATTER = new Intl.DateTimeFormat("zh-CN", {
 
 const GROUP_ORDER: Array<{ key: keyof ReleaseGroups; label: string; color: string }> = [
   { key: "added", label: "新增", color: "border-[#2d5a27] bg-white" },
-  { key: "fixed", label: "修复", color: "border-[#ba1a1a] bg-[#ffdad6]/30" },
+  { key: "fixed", label: "修复", color: "border-[#5c5f5e] bg-[#f0f3ff]" },
   { key: "improved", label: "优化", color: "border-[#154212] bg-[#f0f3ff]" },
 ];
 
