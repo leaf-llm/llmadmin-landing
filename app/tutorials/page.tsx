@@ -6,9 +6,6 @@ export default function Tutorials() {
     <main className="min-h-screen bg-[#f9f9ff] text-[#151c27]">
       <Navigation />
       <div className="max-w-[1200px] mx-auto px-4 md:px-6 py-20">
-        <h1 className="text-3xl md:text-4xl font-bold text-[#154212] mb-12">
-          教程
-        </h1>
 
         <div className="flex gap-8">
           {/* Sidebar */}

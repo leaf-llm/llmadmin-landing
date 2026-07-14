@@ -90,16 +90,6 @@ export default function ReleaseLog() {
     <main className="min-h-screen bg-[#f9f9ff] text-[#151c27]">
       <Navigation />
       <div className="max-w-[900px] mx-auto px-4 md:px-6 py-32">
-        <div className="text-center mb-16">
-          <h1 className="text-3xl md:text-4xl font-bold text-[#151c27] mb-4">
-            更新日志
-          </h1>
-          <div className="w-16 h-1 bg-[#2d5a27] mx-auto rounded-full" />
-          <p className="text-[#5c5f5e] mt-6 max-w-xl mx-auto">
-            记录 LLM Admin 的每一次迭代，见证产品成长。
-          </p>
-        </div>
-
         {releases.length === 0 ? (
           <p className="text-center text-[#5c5f5e]">暂无更新日志</p>
         ) : (

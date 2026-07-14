@@ -48,6 +48,12 @@ export default function Navigation() {
           教程
         </a>
         <a
+          className={isActive("/blog") ? "text-[#154212] dark:text-[#a1d494] font-semibold border-b-2 border-[#154212] transition-all text-sm" : "text-[#5c5f5e] dark:text-[#c5c7c6] hover:text-[#154212] dark:hover:text-[#a1d494] transition-colors text-sm"}
+          href="/blog"
+        >
+          博客
+        </a>
+        <a
           className={isActive("/release-log") ? "text-[#154212] dark:text-[#a1d494] font-semibold border-b-2 border-[#154212] transition-all text-sm" : "text-[#5c5f5e] dark:text-[#c5c7c6] hover:text-[#154212] dark:hover:text-[#a1d494] transition-colors text-sm"}
           href="/release-log"
         >
