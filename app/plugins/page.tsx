@@ -52,16 +52,6 @@ export default function PluginsPage() {
     <main className="min-h-screen bg-[#f9f9ff] text-[#151c27]">
       <Navigation />
       <div className="max-w-[1200px] mx-auto px-4 md:px-6 py-32">
-        <div className="text-center mb-16">
-          <h1 className="text-3xl md:text-4xl font-bold text-[#151c27] mb-4">
-            插件生态
-          </h1>
-          <div className="w-16 h-1 bg-[#2d5a27] mx-auto rounded-full" />
-          <p className="text-[#5c5f5e] mt-6 max-w-xl mx-auto">
-            多款安全防护与内容优化插件，按场景分组，灵活组合你的 AI 网关策略。
-          </p>
-        </div>
-
         <div className="space-y-20">
           {CATEGORIES.map((cat) => {
             const items = getPluginsByCategory(cat.id);
