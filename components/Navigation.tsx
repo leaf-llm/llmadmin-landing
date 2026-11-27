@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaPlay } from "react-icons/fa";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -12,15 +12,15 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-8 py-3 bg-[#f9f9ff]/80 dark:bg-[#d3daea]/80 backdrop-blur-md rounded-full mt-4 mx-auto max-w-[1200px] border border-[#72796e]/10 shadow-sm">
-      <a href="/" className="flex items-center gap-2">
+    <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-3 sm:px-8 py-3 bg-[#f9f9ff]/80 dark:bg-[#d3daea]/80 backdrop-blur-md rounded-full mt-4 mx-auto max-w-[1200px] border border-[#72796e]/10 shadow-sm">
+      <a href="/" className="flex items-center gap-2 shrink-0">
         <img
           alt="LLM Admin Logo"
           className="w-8 h-8 object-contain"
           src="/logo.png"
         />
         <div className="flex items-center gap-2">
-          <span className="font-semibold text-[#154212] dark:text-[#a1d494]">
+          <span className="font-semibold text-[#154212] dark:text-[#a1d494] whitespace-nowrap">
             LLM Admin
           </span>
           <span className="hidden sm:block text-xs text-[#5c5f5e] font-medium tracking-wide">
@@ -60,17 +60,28 @@ export default function Navigation() {
           更新日志
         </a>
       </div>
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 sm:gap-3">
         <a
           href="https://github.com/leaf-llm/llmadmin-ui"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1.5 text-[#2d5a27] dark:text-[#a1d494] text-sm px-4 py-2 rounded-full hover:underline underline-offset-4 transition-colors"
+          aria-label="GitHub"
+          className="flex items-center gap-1.5 text-[#2d5a27] dark:text-[#a1d494] text-sm px-2 sm:px-4 py-2 rounded-full hover:underline underline-offset-4 transition-colors"
         >
           <FaGithub size={16} />
-          GitHub
+          <span className="hidden sm:inline">GitHub</span>
         </a>
-        <a href="/#download" className="bg-[#2d5a27] text-white text-sm px-6 py-2.5 rounded-full hover:opacity-90 transition-all scale-95 active:scale-90 hover:shadow-lg">
+        <a
+          href="https://llmadmin-ui.onrender.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="在线 Demo"
+          className="group flex items-center gap-1.5 text-sm font-medium text-white dark:text-[#1d1403] bg-[#b45309] dark:bg-[#fbbf24] px-3 sm:px-4 py-2 rounded-full shadow-sm hover:bg-[#92400e] dark:hover:bg-[#fcd34d] hover:shadow-md transition-all scale-95 active:scale-90"
+        >
+          <FaPlay size={10} className="transition-transform group-hover:scale-110" />
+          Demo
+        </a>
+        <a href="/#download" className="bg-[#2d5a27] text-white text-sm whitespace-nowrap px-4 sm:px-6 py-2.5 rounded-full hover:opacity-90 transition-all scale-95 active:scale-90 hover:shadow-lg">
           立即开始
         </a>
       </div>
