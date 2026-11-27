@@ -62,16 +62,6 @@ export default function Navigation() {
       </div>
       <div className="flex items-center gap-2 sm:gap-3">
         <a
-          href="https://github.com/leaf-llm/llmadmin-ui"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="GitHub"
-          className="flex items-center gap-1.5 text-[#2d5a27] dark:text-[#a1d494] text-sm px-2 sm:px-4 py-2 rounded-full hover:underline underline-offset-4 transition-colors"
-        >
-          <FaGithub size={16} />
-          <span className="hidden sm:inline">GitHub</span>
-        </a>
-        <a
           href="https://llmadmin-ui.onrender.com/"
           target="_blank"
           rel="noopener noreferrer"
@@ -81,8 +71,15 @@ export default function Navigation() {
           <FaPlay size={10} className="transition-transform group-hover:scale-110" />
           Demo
         </a>
-        <a href="/#download" className="bg-[#2d5a27] text-white text-sm whitespace-nowrap px-4 sm:px-6 py-2.5 rounded-full hover:opacity-90 transition-all scale-95 active:scale-90 hover:shadow-lg">
-          立即开始
+        <a
+          href="https://github.com/leaf-llm/llmadmin-ui"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+          className="flex items-center gap-1.5 text-[#2d5a27] dark:text-[#a1d494] text-sm px-2 sm:px-4 py-2 rounded-full hover:underline underline-offset-4 transition-colors"
+        >
+          <FaGithub size={16} />
+          GitHub
         </a>
       </div>
     </nav>
