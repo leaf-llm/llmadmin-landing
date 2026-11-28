@@ -62,7 +62,7 @@ export default function Navigation() {
       </div>
       <div className="flex items-center gap-2 sm:gap-3">
         <a
-          href="https://llmadmin-ui.onrender.com/"
+          href="https://llmadmin-ui.onrender.com/demo"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="在线 Demo"
