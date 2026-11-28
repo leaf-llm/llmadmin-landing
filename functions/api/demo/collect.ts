@@ -56,9 +56,9 @@ function dayKey(date: Date): string {
 
 function authorized(request: Request, env: Env): boolean {
   const expected = env.DEMO_COLLECT_TOKEN?.trim();
-  // If no token is configured the collector still works, but only when the
-  // operator opted in by binding a KV namespace.
-  if (!expected) return true;
+  // Fail closed: without a configured secret both endpoints are disabled, so a
+  // forgotten variable can never expose demo stats to the internet.
+  if (!expected) return false;
   const header = request.headers.get('authorization') || '';
   const match = /^Bearer\s+(.+)$/i.exec(header.trim());
   return match?.[1]?.trim() === expected;
@@ -94,6 +94,19 @@ export async function onRequestPost({
   env: Env;
   waitUntil: (promise: Promise<void>) => void;
 }) {
+  if (!env.DEMO_COLLECT_TOKEN?.trim()) {
+    return new Response(
+      JSON.stringify({
+        ok: false,
+        message: 'DEMO_COLLECT_TOKEN is not configured; collector disabled',
+      }),
+      {
+        status: 503,
+        headers: { 'Content-Type': 'application/json; charset=utf-8' },
+      }
+    );
+  }
+
   if (!authorized(request, env)) {
     return new Response(JSON.stringify({ ok: false, message: 'Unauthorized' }), {
       status: 401,

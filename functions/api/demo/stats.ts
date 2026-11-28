@@ -31,6 +31,12 @@ export async function onRequestGet({
   request: Request;
   env: Env;
 }) {
+  if (!env.DEMO_COLLECT_TOKEN?.trim()) {
+    return json(
+      { ok: false, message: 'DEMO_COLLECT_TOKEN is not configured; stats disabled' },
+      503
+    );
+  }
   if (!authorized(request, env)) return json({ ok: false, message: 'Unauthorized' }, 401);
 
   const kv = env.DEMO_KV || env.DOWNLOAD_KV;

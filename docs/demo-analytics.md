@@ -24,7 +24,7 @@ Cloudflare Pages → 项目 → **Settings → Functions → KV namespace bindin
 
 | 变量 | 说明 |
 | --- | --- |
-| `DEMO_COLLECT_TOKEN` | 随机串，网关上报与查询 stats 都要带 `Authorization: Bearer <token>`；不配置则接口完全开放（不建议） |
+| `DEMO_COLLECT_TOKEN` | 随机串，网关上报与查询 stats 都要带 `Authorization: Bearer <token>`。**必填**：不配置时两个接口都返回 503（fail-closed），避免忘记配置导致统计公开 |
 
 如果已经配了 `LOGFLARE_API_KEY` / `LOGFLARE_SOURCE_ID`，事件会额外镜像一份到 Logflare，可以直接用现有的看板。
 
