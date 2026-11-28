@@ -64,7 +64,7 @@ export default function Navigation() {
         <a
           href="https://llmadmin-ui.onrender.com/demo"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener noreferrer nofollow"
           aria-label="在线 Demo"
           className="group flex items-center gap-1.5 text-sm font-medium text-white dark:text-[#1d1403] bg-[#b45309] dark:bg-[#fbbf24] px-3 sm:px-4 py-2 rounded-full shadow-sm hover:bg-[#92400e] dark:hover:bg-[#fcd34d] hover:shadow-md transition-all scale-95 active:scale-90"
         >
