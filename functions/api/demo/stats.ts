@@ -39,8 +39,11 @@ export async function onRequestGet({
   }
   if (!authorized(request, env)) return json({ ok: false, message: 'Unauthorized' }, 401);
 
-  const kv = env.DEMO_KV || env.DOWNLOAD_KV;
-  if (!kv) return json({ ok: false, message: 'KV not bound' }, 500);
+  const demoKv = env.DEMO_KV || env.DOWNLOAD_KV;
+  // Download counters always live in the download namespace, even when demo
+  // events use a dedicated one.
+  const downloadKv = env.DOWNLOAD_KV || env.DEMO_KV;
+  if (!demoKv) return json({ ok: false, message: 'KV not bound' }, 500);
 
   const url = new URL(request.url);
   const requested = Number(url.searchParams.get('days') || '7');
@@ -56,13 +59,29 @@ export async function onRequestGet({
     keys.push(`demo:day:${iso}`);
   }
 
-  const [totalsRaw, ...dailyRaw] = await Promise.all([
-    kv.get('demo:totals'),
-    ...keys.map((key) => kv.get(key)),
+  const platforms = ['windows', 'macos', 'linux'] as const;
+  const [totalsRaw, ...rest] = await Promise.all([
+    demoKv.get('demo:totals'),
+    ...keys.map((key) => demoKv.get(key)),
+    ...platforms.map((platform) =>
+      downloadKv ? downloadKv.get(`downloads:${platform}`) : Promise.resolve(null)
+    ),
   ]);
+  const dailyRaw = rest.slice(0, keys.length);
+  const downloadRaw = rest.slice(keys.length);
+
+  const downloadsByPlatform: Record<string, number> = {};
+  platforms.forEach((platform, index) => {
+    downloadsByPlatform[platform] = parseInt(downloadRaw[index] || '0', 10) || 0;
+  });
+  const downloads = {
+    total: Object.values(downloadsByPlatform).reduce((sum, n) => sum + n, 0),
+    byPlatform: downloadsByPlatform,
+  };
 
   return json({
     ok: true,
+    downloads,
     totals: totalsRaw ? JSON.parse(totalsRaw) : null,
     days: labels
       .map((date, index) => {

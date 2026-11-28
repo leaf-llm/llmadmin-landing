@@ -69,7 +69,19 @@ curl -H "Authorization: Bearer $DEMO_COLLECT_TOKEN" \
   "https://llmadmin.dev/api/demo/stats?days=7"
 ```
 
-返回 `totals` 和最近 7 天的数组（缺失的天为 `requests: null`）。
+返回结构：
+
+```json
+{
+  "ok": true,
+  "downloads": { "total": 1234, "byPlatform": { "windows": 800, "macos": 300, "linux": 134 } },
+  "totals": { "events": { "...": 0 }, "requests": { "total": 0 } },
+  "days": [ { "date": "2026-11-28", "events": {}, "requests": { "total": 0 } } ]
+}
+```
+
+- `downloads` 直接读取现有下载计数 `downloads:windows` / `downloads:macos` / `downloads:linux`（始终从 `DOWNLOAD_KV` 读，即使演示事件用了独立的 `DEMO_KV`），所以不用改下载链路
+- `days` 是最近 N 天（缺失的天为 `requests: null`）
 
 ## 5. 成本
 
